@@ -1,0 +1,14 @@
+{
+  "name": "projectopdracht",
+  "version": "1.0.0",
+  "description": "projectopdracht Webontwikkeling",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.5"
+  }
+}
