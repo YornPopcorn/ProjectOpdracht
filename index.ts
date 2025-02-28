@@ -1,11 +1,11 @@
 import * as readline from 'readline';
-import { readFile } from 'fs/promises';
-import { guitars } from './interfaces';
+import {guitars} from './interfaces';
 
 // Functie om JSON data asynchroon te laden
 async function loadData(): Promise<guitars[]> {
-    const rawData = await readFile('gitaren.json', 'utf-8');
-    return JSON.parse(rawData).map((guitar: any) => ({
+    const response = await fetch('https://raw.githubusercontent.com/YornPopcorn/Json-Gitaren/refs/heads/main/gitaren.json');
+    const rawData = await response.json();
+    return rawData.map((guitar: any) => ({
         ...guitar,
         usageDate: new Date(guitar.usageDate)
     })) as guitars[];
@@ -93,7 +93,7 @@ async function main() {
     promptUser();
 }
 
-// Start de applicatie
+// Start de applicatie of error als er iets fout loopt
 main().catch(error => {
     console.error('An error occurred:', error);
 });
